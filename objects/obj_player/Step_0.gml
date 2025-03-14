@@ -29,8 +29,8 @@ move_and_collide(x_speed, y_speed, obj_ground);
 
 /*Seleção de itens*/
 if keyboard_check_pressed(vk_shift){
-	if selected_item==3
+	if selected_item==3//se o item 3 estiver selecionado, o próximo será o item 1 (completando um loop)
 		selected_item = 1;
 	else
-		selected_item++;
+		selected_item++;//seleciona o próximo item
 }
