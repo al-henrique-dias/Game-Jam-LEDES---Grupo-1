@@ -11,7 +11,7 @@ if place_meeting(x, y+1, obj_ground){
 	y_speed = 0;
 	//espaço = pular - move o player para cima 3px por frame (limitado pela gravidade: quanto maior velocidade, mais alto o pulo)
 	//o pulo só é iniciado quando o player está colidindo com o chão
-	if keyboard_check_pressed(ord("W"))//se move apenas a cada acionamento de tecla
+	if keyboard_check_pressed(vk_space)//se move apenas a cada acionamento de tecla
 		y_speed -= 3
 }
 //D = andar para a direita - move o player para a direita 2.5px por frame
@@ -26,3 +26,11 @@ if keyboard_check(ord("A")) {
 }
 //determina o movimento do player em relação ao terreno (adiciona colisão horizontal com obj_ground)
 move_and_collide(x_speed, y_speed, obj_ground);
+
+/*Seleção de itens*/
+if keyboard_check_pressed(vk_shift){
+	if selected_item==3
+		selected_item = 1;
+	else
+		selected_item++;
+}

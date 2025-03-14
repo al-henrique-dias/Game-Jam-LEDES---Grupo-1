@@ -1,11 +1,11 @@
 {
   "$GMSprite":"",
-  "%Name":"spr_hud_item_1",
+  "%Name":"spr_hud_item_frame",
   "bboxMode":0,
-  "bbox_bottom":47,
-  "bbox_left":16,
-  "bbox_right":47,
-  "bbox_top":16,
+  "bbox_bottom":63,
+  "bbox_left":0,
+  "bbox_right":63,
+  "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
@@ -21,7 +21,7 @@
   "layers":[
     {"$GMImageLayer":"","%Name":"0b062201-1e04-475d-8fb9-bd4e0c7d45c1","blendMode":0,"displayName":"default","isLocked":false,"name":"0b062201-1e04-475d-8fb9-bd4e0c7d45c1","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"spr_hud_item_1",
+  "name":"spr_hud_item_frame",
   "nineSlice":null,
   "origin":0,
   "parent":{
@@ -33,7 +33,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"",
-    "%Name":"spr_hud_item_1",
+    "%Name":"spr_hud_item_frame",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -57,7 +57,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"spr_hud_item_1",
+    "name":"spr_hud_item_frame",
     "playback":1,
     "playbackSpeed":30.0,
     "playbackSpeedType":0,
@@ -69,7 +69,7 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"75d8c9fa-2b5e-4408-a369-7d2edd1b4afb","path":"sprites/spr_hud_item_1/spr_hud_item_1.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"75d8c9fa-2b5e-4408-a369-7d2edd1b4afb","path":"sprites/spr_hud_item_frame/spr_hud_item_frame.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"beb8503b-2d37-454f-9451-d0d0020f1834","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
