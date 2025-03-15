@@ -15,7 +15,7 @@ if(instance_exists(obj_player)){//só aparece em telas de jogo (onde o player es
 }
 
 /*Hud para debbuging*/
-draw_text(32, 32, "Player ("+string(obj_player.x)+","+string(obj_player.y)+"):");
+draw_text(32, 32, "Player ("+string(obj_player.x)+","+string(obj_player.y)+") ("+string(obj_player.current_state)+"):");
 draw_text(32, 44, "direction: "+string(obj_player.image_xscale==1?"right":"left"));
 draw_text(32, 56, "- x speed: "+string(obj_player.x_speed));
 draw_text(32, 67, "- y speed: "+string(obj_player.y_speed));
