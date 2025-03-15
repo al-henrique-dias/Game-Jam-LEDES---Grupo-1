@@ -1,3 +1,14 @@
+/*Estados do Player*/
+//no chão
+is_on_ground = place_meeting(x, y+1, obj_ground);
+//andando para a direita
+is_going_right = keyboard_check(ord("D"));
+//andando para a esquerda
+is_going_left = keyboard_check(ord("A"));
+//correndo
+is_running = item_2;
+//pulando
+is_jumping = keyboard_check_pressed(vk_space);
 //step da velocidade de x, a constante atribuição de x permite que o player pare de se mover quando não há input constante
 x_speed = 0;
 //step da velocidade de y, a constante adição em y simula a força da gravidade
@@ -6,39 +17,56 @@ y_speed += .1;
 /*
 Movimento
 */
-sprite_index = spr_player_idle_t;
+sprite_index = spr_player_idle_t;//sprite de idle adivado por default
 //os objetos passados nos place_meeting() são os limites da queda (movimento em y para baixo) do player
-if place_meeting(x, y+1, obj_ground){
+if is_on_ground {//verifica se o player está no chão
 	y_speed = 0;
 	//espaço = pular - move o player para cima 3px por frame (limitado pela gravidade: quanto maior velocidade, mais alto o pulo)
 	//o pulo só é iniciado quando o player está colidindo com o chão
-	if keyboard_check_pressed(vk_space){//se move apenas a cada acionamento de tecla
+	if is_jumping//movimento para cada acionamento de tecla
 		y_speed -= 3
+}
+if !is_on_ground//verifica se o player está no ar (não está no chão)
+	if y_speed < 0
+		sprite_index = spr_player_jump_t;//sprite de pulo ativa
+	else
+		sprite_index = spr_player_fall_t;//sprite de queda ativa
+//D = andar para a direita - move o player para a direita (x_speed)px por frame
+if is_going_right {//movimento para enquanto a tecla estiver pressionada
+	if is_running {//o player só corre quando coletou o item 2
+		if is_on_ground{//verifica se o player está no chão
+			sprite_index = spr_player_run_t;//sprite de correr ativa
+			mask_index = spr_player_idle_t;//mantém a máscara de colisão (garante funcionamento de colisão com terreno)
+		}
+		x_speed += 3;
+		image_xscale = 1;//inverte o sprite para a direita
+	} else {//se não estiver correndo, vai apenas ander
+		if is_on_ground{//verifica se o player está no chão
+			sprite_index = spr_player_walk_t;//sprite de andar ativa
+			mask_index = spr_player_idle_t;//mantém a máscara de colisão (garante funcionamento de colisão com terreno)
+		}
+		x_speed += 1;
+		image_xscale = 1;//inverte o sprite para a direita
 	}
 }
-if !place_meeting(x, y+1, obj_ground)
-	sprite_index = spr_player_jump;
-//D = andar para a direita - move o player para a direita 2.5px por frame
-if keyboard_check(ord("D")) {//se move enquanto a tecla estiver pressionada
-	sprite_index = spr_player_walk_t;
-	x_speed += 1;
-	image_xscale = 1;
-	mask_index = spr_player_idle_t;//mantém a máscara de colisão (garante funcionamento de colisão com terreno)
+//A = andar para a esquerda - move o player para a esquerda (x_speed)px por frame
+if is_going_left {//movimento para enquanto a tecla estiver pressionada
+	if is_running {//o player só corre quando coletou o item 2
+		if is_on_ground{
+			sprite_index = spr_player_run_t;//sprite de correr ativa
+			mask_index = spr_player_idle_t;//mantém a máscara de colisão (garante funcionamento de colisão com terreno)
+		}
+		x_speed -= 3;
+		image_xscale = -1;//inverte o sprite para a esquerda
+	} else {//se não estiver correndo, vai apenas andar
+		if is_on_ground{
+			sprite_index = spr_player_walk_t;//sprite de andar ativa
+			mask_index = spr_player_idle_t;//mantém a máscara de colisão (garante funcionamento de colisão com terreno)
+		}
+		x_speed -= 1;
+		image_xscale = -1;//inverte o sprite para a esquerda
+	}
 }
-//A = andar para a esquerda - move o player para a esquerda 2.5px por frame
-if keyboard_check(ord("A")) {	
-	sprite_index = spr_player_walk_t;
-	x_speed -= 1;
-	image_xscale = -1;
-	mask_index = spr_player_idle_t;//mantém a máscara de colisão (garante funcionamento de colisão com terreno)
-}
+
 //determina o movimento do player em relação ao terreno (adiciona colisão horizontal com obj_ground)
 move_and_collide(x_speed, y_speed, obj_ground);
-
-/*Seleção de itens*/
-if keyboard_check_pressed(vk_shift){
-	if selected_item==3//se o item 3 estiver selecionado, o próximo será o item 1 (completando um loop)
-		selected_item = 1;
-	else
-		selected_item++;//seleciona o próximo item
-}
