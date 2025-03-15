@@ -1,3 +1,4 @@
+
 //previne que o player fique preso na parede ao mudar de direção
 if keyboard_check(ord("D")) or keyboard_check(vk_right)
 	obj_player.x += 1;
