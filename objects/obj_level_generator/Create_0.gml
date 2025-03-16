@@ -3,7 +3,7 @@ randomize(); // Garante aleatoriedade diferente a cada execução
 // Criar o grid do nível
 global.level_grid = ds_grid_create(32, 24); // Grid de 32x24 células
 ds_grid_clear(global.level_grid, 0);
-global.root = new BSPNode(0, 0, 32, 24); // Exemplo de algoritmo BSP
+global.root = new BSPNode(0, 0, 32, 24);
 divide_node(global.root); // Divide os nós
 connect_rooms(global.root); // Conecta as salas
 

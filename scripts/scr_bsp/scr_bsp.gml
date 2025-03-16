@@ -1,5 +1,5 @@
 
-global.level_grid = ds_grid_create(32, 32); // Exemplo: 32x24 células para uma room de 1024x768 pixels
+global.level_grid = ds_grid_create(32, 32); 
 ds_grid_clear(global.level_grid, 0); // 0 = vazio
 function BSPNode(x, y, width, height) constructor {
     self.x = x;           // Posição X em células
@@ -91,5 +91,3 @@ function get_leaf_room(node) {
     if (node.room != -1) return node.room;
     return get_leaf_room(node.left); // Simplificado, pode precisar ajustes
 }
-global.level_grid = ds_grid_create(32, 24); // Exemplo: 32x24 células para uma room de 1024x768 pixels
-ds_grid_clear(global.level_grid, 0); // 0 = vazio

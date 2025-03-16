@@ -49,6 +49,7 @@
     {"id":{"name":"obj_level_generator","path":"objects/obj_level_generator/obj_level_generator.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_rastro","path":"objects/obj_rastro/obj_rastro.yy",},},
+    {"id":{"name":"obj_solid","path":"objects/obj_solid/obj_solid.yy",},},
     {"id":{"name":"obj_wall","path":"objects/obj_wall/obj_wall.yy",},},
     {"id":{"name":"Object8","path":"objects/Object8/Object8.yy",},},
     {"id":{"name":"nivel_infinito","path":"rooms/nivel_infinito/nivel_infinito.yy",},},
