@@ -25,6 +25,6 @@ if(instance_exists(obj_player)){//só aparece em telas de jogo (onde o player es
 //draw_text(32, 100, "- item 3 colected: "+string(obj_player.item_3?"true":"false"));
 //draw_text(32, 124, "- current sprite: "+string(obj_player.sprite_index));
 //Enemy
-draw_text(32, 32, "enemy ("+string(obj_enemy.x)+","+string(obj_enemy.y)+"):");
-draw_text(32, 44, "direction: "+string(obj_enemy.image_xscale==1?"right":"left"));
-draw_text(32, 56, "- x speed: "+string(obj_enemy.x_speed));
+//draw_text(32, 32, "enemy ("+string(obj_enemy.x)+","+string(obj_enemy.y)+"):");
+//draw_text(32, 44, "direction: "+string(obj_enemy.image_xscale==1?"right":"left"));
+//draw_text(32, 56, "- x speed: "+string(obj_enemy.x_speed));
