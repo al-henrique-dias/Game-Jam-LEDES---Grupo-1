@@ -9,6 +9,8 @@ is_going_left = keyboard_check(ord("A"));
 is_running = item_2;
 //pulando
 is_jumping = keyboard_check_pressed(vk_space);
+//atacando
+is_attacking = keyboard_check_pressed(ord("W"));
 //step da velocidade de x, a constante atribuição de x permite que o player pare de se mover quando não há input constante
 x_speed = 0;
 //step da velocidade de y, a constante adição em y simula a força da gravidade
@@ -41,14 +43,20 @@ if !is_on_ground//verifica se o player está no ar (não está no chão)
 if is_going_right {//movimento para enquanto a tecla estiver pressionada
 	if is_running {//o player só corre quando coletou o item 2
 		if is_on_ground{//verifica se o player está no chão
-			sprite_index = spr_player_run;//sprite de correr ativa
+			if is_attacking
+				sprite_index = spr_player_attack;
+			else
+				sprite_index = spr_player_run;//sprite de correr ativa
 			mask_index = spr_player_idle;//mantém a máscara de colisão (garante funcionamento de colisão com terreno)
 		}
 		x_speed += 3;
 		image_xscale = 1;//inverte o sprite para a direita
 	} else {//se não estiver correndo, vai apenas ander
 		if is_on_ground{//verifica se o player está no chão
-			sprite_index = spr_player_walk;//sprite de andar ativa
+			if is_attacking
+				sprite_index = spr_player_attack;
+			else
+				sprite_index = spr_player_walk;//sprite de andar ativa
 			mask_index = spr_player_idle;//mantém a máscara de colisão (garante funcionamento de colisão com terreno)
 		}
 		x_speed += 1;
@@ -59,14 +67,20 @@ if is_going_right {//movimento para enquanto a tecla estiver pressionada
 if is_going_left {//movimento para enquanto a tecla estiver pressionada
 	if is_running {//o player só corre quando coletou o item 2
 		if is_on_ground{
-			sprite_index = spr_player_run;//sprite de correr ativa
+			if is_attacking
+				sprite_index = spr_player_attack;
+			else
+				sprite_index = spr_player_run;//sprite de correr ativa
 			mask_index = spr_player_idle;//mantém a máscara de colisão (garante funcionamento de colisão com terreno)
 		}
 		x_speed -= 3;
 		image_xscale = -1;//inverte o sprite para a esquerda
 	} else {//se não estiver correndo, vai apenas andar
 		if is_on_ground{
-			sprite_index = spr_player_walk;//sprite de andar ativa
+			if is_attacking
+				sprite_index = spr_player_attack;
+			else
+				sprite_index = spr_player_walk;//sprite de andar ativa
 			mask_index = spr_player_idle;//mantém a máscara de colisão (garante funcionamento de colisão com terreno)
 		}
 		x_speed -= 1;
@@ -74,5 +88,12 @@ if is_going_left {//movimento para enquanto a tecla estiver pressionada
 	}
 }
 
+if !is_alive{
+	x_speed = 0;
+	y_speed = 0;
+	sprite_index = spr_player_death;
+	image_xscale = 1;
+	image_speed = 0;
+}
 //determina o movimento do player em relação ao terreno (adiciona colisão horizontal com obj_ground)
 move_and_collide(x_speed, y_speed, obj_ground);
