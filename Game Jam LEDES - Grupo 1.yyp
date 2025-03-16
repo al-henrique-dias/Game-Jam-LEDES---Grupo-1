@@ -48,6 +48,7 @@
     {"id":{"name":"nivel1","path":"rooms/nivel1/nivel1.yy",},},
     {"id":{"name":"nivel2","path":"rooms/nivel2/nivel2.yy",},},
     {"id":{"name":"tela_titulo","path":"rooms/tela_titulo/tela_titulo.yy",},},
+    {"id":{"name":"spr_attack_2","path":"sprites/spr_attack_2/spr_attack_2.yy",},},
     {"id":{"name":"spr_background","path":"sprites/spr_background/spr_background.yy",},},
     {"id":{"name":"spr_enemy_idle","path":"sprites/spr_enemy_idle/spr_enemy_idle.yy",},},
     {"id":{"name":"spr_enemy_walk","path":"sprites/spr_enemy_walk/spr_enemy_walk.yy",},},
