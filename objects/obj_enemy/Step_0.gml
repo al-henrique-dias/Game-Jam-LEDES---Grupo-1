@@ -1,8 +1,25 @@
- if place_meeting(x+sign(x_speed), y, obj_ground) or !place_meeting(x+16, y+2, obj_ground) {
-	x_speed *= sign(image_xscale);
-	image_xscale *= -1;
+// Aplicar gravidade (inimigo cai se não houver chão)
+if (!place_meeting(x, y + 1, obj_solid)) {
+    vspeed += gravidade;
+} else {
+    vspeed = 0;
 }
-move_and_collide(x_speed, 0, obj_ground);
 
-//atirar
-//instance_create_layer(x, y, "Instances", obj_bullet);
+// Definir movimento horizontal
+hspeed = direcao * velocidade;
+
+// Verificar colisão com parede
+if (place_meeting(x + hspeed, y, obj_solid)) {
+    direcao *= -1; // Inverter direção
+    hspeed = direcao * velocidade;
+}
+
+// Verificar beira do penhasco (se não houver chão à frente)
+//if (!place_meeting(x + (sprite_width / 2 * direcao), y + 1, obj_floor)) {
+  //  direcao *= -1; // Inverter direção
+    //hspeed = direcao * velocidade;
+//}
+
+// Atualizar posição
+x += hspeed;
+y += vspeed;

@@ -1,4 +1,7 @@
-
+ 
+ var _tile = layer_tilemap_get_id("Fase")
+ move_and_collide(x_speed, y_speed, obj_solid);
+ 
 // Estados existentes
 is_on_ground = place_meeting(x, y + 1, obj_solid); // Agora verifica obj_solid
 is_going_right = keyboard_check(ord("D"));
@@ -136,3 +139,23 @@ if (!is_alive) {
 }
 
 move_and_collide(x_speed, y_speed, obj_solid);
+
+if (instance_exists(obj_player)) {
+    var player_x = obj_player.x;
+    var player_y = obj_player.y;
+    
+    // Posição desejada da câmera (centralizada no jogador)
+    var target_x = player_x - camera_get_view_width(global.camera) / 2;
+    var target_y = player_y - camera_get_view_height(global.camera) / 2;
+    
+    // Obter a posição atual da câmera
+    var current_x = camera_get_view_x(global.camera);
+    var current_y = camera_get_view_y(global.camera);
+    
+    // Interpolar suavemente para a posição desejada
+    var new_x = lerp(current_x, target_x, 0.1); // 0.1 é a velocidade de suavização (ajuste conforme necessário)
+    var new_y = lerp(current_y, target_y, 0.1);
+    
+    // Atualizar a posição da câmera
+    camera_set_view_pos(global.camera, new_x, new_y);
+}
