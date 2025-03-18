@@ -1,7 +1,6 @@
- 
- var _tile = layer_tilemap_get_id("Fase")
- move_and_collide(x_speed, y_speed, obj_solid);
- 
+var _tile = layer_tilemap_get_id("Fase")
+move_and_collide(x_speed, y_speed, obj_solid);
+
 // Estados existentes
 is_on_ground = place_meeting(x, y + 1, obj_solid); // Agora verifica obj_solid
 is_going_right = keyboard_check(ord("D"));
@@ -9,8 +8,8 @@ is_going_left = keyboard_check(ord("A"));
 is_running = item_2;
 is_jumping = keyboard_check_pressed(vk_space);
 
-// Início do ataque especial com a tecla "F"
-if (keyboard_check_pressed(ord("F")) && is_on_ground && !is_special_attacking) {
+// Início do ataque especial com a tecla "F" 
+if (keyboard_check_pressed(ord("W")) && !is_special_attacking) {
     is_special_attacking = true;
     special_attack_timer = 0; // Inicia em 0 para permitir a animação
     sprite_index = spr_player_attack;
@@ -70,8 +69,8 @@ if (is_special_attacking) {
     if (special_attack_timer >= special_attack_duration) {
         is_special_attacking = false;
         if (rastro_instance != noone) {
-            // Teletransporta o jogador para a posição do rastro
-            x = rastro_instance.x;
+            // Teletransporta o jogador para a posição do rastro, considerando a direção
+            x = rastro_instance.x + rastro_instance.image_xscale * 50;
             y = rastro_instance.y;
             // Destroi o obj_rastro
             instance_destroy(rastro_instance);

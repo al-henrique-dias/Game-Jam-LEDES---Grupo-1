@@ -58,8 +58,8 @@ if (ds_list_size(valid_positions) > 0) {
     camera_set_view_target(global.camera, player_instance); // Câmera segue o jogador
 }
 
-// Spawnar inimigos (exemplo: 3 inimigos)
-var num_enemies = 3;
+// Spawnar inimigos 
+var num_enemies = 10;
 for (var k = 0; k < num_enemies; k++) {
     if (ds_list_size(valid_positions) > 0) {
         var index = irandom(ds_list_size(valid_positions) - 1);
@@ -71,7 +71,7 @@ for (var k = 0; k < num_enemies; k++) {
     }
 }
 
-// Spawnar itens (3 itens diferentes)
+// Spawnar itens 
 var num_items = 3;
 var item_objects = [obj_item_1, obj_item_2, obj_item_3];
 for (var k = 0; k < num_items; k++) {
